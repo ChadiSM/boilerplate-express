@@ -3,14 +3,15 @@ let app = express();
 const router = express.Router();
 const path = require("path");
 require("dotenv").config();
-var bodyParser = require("body-parser");
+
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
-  next(); // Pasa al siguiente middleware o ruta
+  next();
 });
 
 app.use("/public", express.static(path.join(__dirname, "public")));
