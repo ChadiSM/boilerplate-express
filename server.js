@@ -6,13 +6,15 @@
 const bGround = require('fcc-express-bground');
 const myApp = require('./myApp');
 const express = require('express');
-const app = express();
-
 const path = require('path');
 
+const app = express();
 
 
-app.use("/public", express.static(__dirname + "/public"));
+
+
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 
