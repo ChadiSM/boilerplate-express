@@ -6,14 +6,14 @@ require("dotenv").config();
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-// Definir la ruta para el camino raíz '/'
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "views", "index.html"));
-});
-
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
   next(); // Pasa al siguiente middleware o ruta
+});
+
+// Definir la ruta para el camino raíz '/'
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 app.get("/json", function (req, res) {
