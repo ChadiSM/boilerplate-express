@@ -13,10 +13,13 @@ app.get("/", function(req, res) {
 });
 
 app.get("/json", function(req, res) {
-    let message = "Hello from message";
+    let message = "Hello json";
+    
+    
     if (process.env.MESSAGE_STYLE === "uppercase") {
-      message = message.toUpperCase();
+      message = message.toUpperCase(); 
     }
-    res.json({ "message": message });
+    
+    res.json({ message: message }); 
   });
 module.exports = app; // Exportar la app para que sea utilizada en server.js
