@@ -1,5 +1,7 @@
 let express = require('express');
 let app = express();
+const router = express.Router();
+const path = require('path');
 
 // Definir la ruta para el camino raíz '/'
 app.get("/", function(req, res) {
