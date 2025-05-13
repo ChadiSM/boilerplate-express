@@ -8,6 +8,8 @@ const myApp = require('./myApp');
 const express = require('express');
 const app = express();
 
+const path = require('path');
+
 app.use('/public', express.static(__dirname + '/public'));
 
 
