@@ -11,7 +11,6 @@ app.use((req, res, next) => {
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-// Definir la ruta para el camino raíz '/'
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
@@ -25,5 +24,16 @@ app.get("/json", function (req, res) {
 
   res.json({ message: responseMessage });
 });
+
+app.get(
+  "/now",
+  function (req, res, next) {
+    req.time = new Date().toString();
+    next();
+  },
+  function (req, res) {
+    res.json({ time: req.time });
+  },
+);
 
 module.exports = app; // Exportar la app para que sea utilizada en server.js
