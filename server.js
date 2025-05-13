@@ -10,7 +10,7 @@ const app = express();
 
 const path = require('path');
 
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 if (!process.env.DISABLE_XORIGIN) {
