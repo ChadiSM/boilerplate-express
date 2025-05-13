@@ -6,9 +6,10 @@ require("dotenv").config();
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path} - ${req.ip}`);
-  next(); // Pasa al siguiente middleware o ruta
+app.use(function middleware(req, res, next) {
+  // Do something
+  // Call the next function in line:
+  next();
 });
 
 // Definir la ruta para el camino raíz '/'
