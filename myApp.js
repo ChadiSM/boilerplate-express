@@ -36,4 +36,11 @@ app.get(
   },
 );
 
+app.get("/:word/echo", (req, res) => {
+  const { word } = req.params;
+  res.json({
+    echo: word,
+  });
+});
+
 module.exports = app; // Exportar la app para que sea utilizada en server.js
