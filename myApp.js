@@ -8,6 +8,12 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 // Definir la ruta para el camino raíz '/'
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
-  });
+});
+
+app.get("/json", (req, res) => {
+    res.json({
+    message: "Hello json"
+    });
+});
 
 module.exports = app; // Exportar la app para que sea utilizada en server.js
