@@ -12,12 +12,15 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/json', (req, res) => {
-    const message = process.env.MESSAGE_STYLE === 'uppercase' 
-      ? 'Hello json'.toUpperCase() 
-      : 'Hello json';
-    
-    res.json({ message });
-  });
+app.get("/json", function(req, res) {
+    let responseMessage = "Hello json";
   
+    
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+      responseMessage = responseMessage.toUpperCase(); 
+    }
+  
+    res.json({ message: responseMessage }); 
+  });
+
 module.exports = app; // Exportar la app para que sea utilizada en server.js
