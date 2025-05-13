@@ -4,13 +4,12 @@ const router = express.Router();
 const path = require("path");
 require("dotenv").config();
 
-app.use("/public", express.static(path.join(__dirname, "public")));
-
-app.use(function middleware(req, res, next) {
-  // Do something
-  // Call the next function in line:
-  next();
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next(); // Pasa al siguiente middleware o ruta
 });
+
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 // Definir la ruta para el camino raíz '/'
 app.get("/", function (req, res) {
